@@ -1,0 +1,117 @@
+@use '/src/apps/styles/basics/common.scss' as common;
+@use '/src/apps/styles/basics/vars.scss' as *;
+
+.calender {
+	@include common.flex-column;
+	width: 90%;
+	height: 100%;
+}
+
+.calender-header {
+	@include common.flex-row;
+	height: 48px;
+	background-color: $ac-gray-0;
+	width: 100%;
+
+	.calender-heder__nav {
+		@include common.flex-row(center, normal);
+
+		.navbar__button {
+			padding: 0 5px;
+
+			img {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		.navbar__date {
+			font-weight: 700;
+			color: $primary-color;
+			font-size: 22px;
+			margin: 0 10px;
+		}
+	}
+}
+
+.calender-days {
+	@include common.flex-row(normal, normal);
+	width: 100%;
+	font-weight: 600;
+	font-size: 0.7em;
+	background-color: $ac-gray-1;
+	color: $ac-gray-4;
+
+	.date {
+		@include common.size(14.28571%, 90%);
+		@include common.flex-row(center, normal);
+		margin: 10px;
+	}
+}
+
+.calender-body {
+	@include common.flex-column;
+	@include common.size(100%, 90%);
+
+	.calender-row {
+		@include common.size(100%, 100%);
+		@include common.flex-row(space-between, center);
+	}
+
+	.calender-row__cell {
+		@include common.size(14.28571%, 93%);
+
+		font-size: 0.8em;
+		display: table-cell;
+
+		.calender-row__day {
+			border: 0.4px solid $ac-gray-6;
+			width: 100%;
+			text-align: center;
+			line-height: 18px;
+			color: $ac-gray-4;
+		}
+
+		.calender-row__content {
+			height: auto;
+			min-height: 80px;
+			border: 0.4px solid $ac-gray-6;
+			padding-left: 4px;
+			padding-top: 2px;
+		}
+
+		.calender-row__company {
+			@include common.flex-row(normal, center);
+			font-size: 13px;
+			height: 100%;
+			width: calc(100% - 24px);
+			position: relative;
+			margin-top: 2px;
+		}
+
+		.calender-row__label {
+			color: #fff;
+			font-size: 10px;
+			border-radius: 4px;
+			height: 14px;
+			width: 14px;
+			margin-right: 3px;
+			text-align: center;
+			line-height: 14px;
+
+			&.start {
+				background-color: $primary-color;
+			}
+			&.end {
+				background-color: $secondary-color;
+			}
+		}
+		// span {
+		// 	margin: 4px 0 0 4px;
+		// }
+
+		img {
+			opacity: 0.1;
+		}
+	}
+}

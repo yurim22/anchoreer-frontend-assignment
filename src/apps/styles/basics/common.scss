@@ -1,0 +1,18 @@
+@mixin size($width: 14px, $height: 14px) {
+	width: $width;
+	height: $height;
+}
+
+@mixin flex-column($justify-content: center, $align-items: center) {
+	display: flex;
+	flex-direction: column;
+	justify-content: $justify-content;
+	align-items: $align-items;
+}
+
+@mixin flex-row($justify-content: center, $align-items: center) {
+	display: flex;
+	flex-direction: row;
+	justify-content: $justify-content;
+	align-items: $align-items;
+}

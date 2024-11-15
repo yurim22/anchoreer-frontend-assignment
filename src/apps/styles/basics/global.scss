@@ -1,37 +1,37 @@
-@use '/src/styles/basic/vars.scss' as *;
+@use '/src/apps/styles/basics/vars.scss' as *;
 
 :root {
-  font-family: sans-serif, system-ui;
-  font-synthesis: none;
-  text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
+	font-family: sans-serif, system-ui;
+	font-synthesis: none;
+	text-rendering: optimizeSpeed;
+	-webkit-font-smoothing: antialiased;
 }
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 
-  color: $text-color;
+	color: $text-color;
 }
 button,
 input {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  border: 0;
-  background-color: transparent;
-  outline: none;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	border: 0;
+	background-color: transparent;
+	outline: none;
 }
 button {
-  cursor: pointer;
-  background-color: transparent;
+	cursor: pointer;
+	background-color: transparent;
 }
 .blind {
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
 }
