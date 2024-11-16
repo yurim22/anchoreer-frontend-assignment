@@ -1,6 +1,11 @@
 @use '/src/apps/styles/basics/common.scss' as common;
 @use '/src/apps/styles/basics/vars.scss' as *;
 
+.job-calender__container {
+	@include common.flex-column;
+	@include common.size(100%, 100%);
+}
+
 .calender {
 	@include common.flex-column;
 	width: 90%;
