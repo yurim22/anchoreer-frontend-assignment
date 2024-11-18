@@ -1,0 +1,17 @@
+@use '/src/apps/styles/basics/common.scss' as common;
+@use '/src/apps/styles/basics/vars.scss' as *;
+
+.calender-days {
+	@include common.flex-row(normal, normal);
+	width: 100%;
+	font-weight: 600;
+	font-size: 0.7em;
+	background-color: $ac-gray-1;
+	color: $ac-gray-4;
+
+	.date {
+		@include common.size(14.28571%, 90%);
+		@include common.flex-row(center, normal);
+		margin: 10px;
+	}
+}

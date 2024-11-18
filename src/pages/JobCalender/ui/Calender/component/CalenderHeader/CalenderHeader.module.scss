@@ -1,0 +1,29 @@
+@use '/src/apps/styles/basics/common.scss' as common;
+@use '/src/apps/styles/basics/vars.scss' as *;
+
+.calender-header {
+	@include common.flex-row;
+	height: 48px;
+	background-color: $ac-gray-0;
+	width: 100%;
+
+	.calender-heder__nav {
+		@include common.flex-row(center, normal);
+
+		.navbar__button {
+			padding: 0 5px;
+
+			img {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		.navbar__date {
+			font-weight: 700;
+			color: $primary-color;
+			font-size: 22px;
+			margin: 0 10px;
+		}
+	}
+}

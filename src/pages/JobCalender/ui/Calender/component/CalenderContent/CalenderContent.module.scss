@@ -1,0 +1,12 @@
+@use '/src/apps/styles/basics/common.scss' as common;
+@use '/src/apps/styles/basics/vars.scss' as *;
+
+.calender-body {
+	@include common.flex-column;
+	@include common.size(100%, 90%);
+
+	.calender-row {
+		@include common.size(100%, 100%);
+		@include common.flex-row(space-between, normal);
+	}
+}
