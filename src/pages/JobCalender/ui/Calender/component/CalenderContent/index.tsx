@@ -2,10 +2,11 @@ import { addDays, endOfMonth, endOfWeek, startOfMonth } from 'date-fns/fp';
 import styles from './CalenderContent.module.scss';
 import classNames from 'classnames/bind';
 import { startOfWeek } from 'date-fns';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect } from 'react';
 import CalenderCell from '../CalenderCell';
 import { useRecruitsQuery } from '@/pages/JobCalender/hook/api/useRecruitsQuery';
 import { useFilterJobs } from '@/pages/JobCalender/hook/common/useFilterJobs';
+import { useRecruitStore } from '@/shared/store/useRecruitStore';
 
 const cx = classNames.bind(styles);
 
@@ -17,13 +18,19 @@ const CalenderContent = ({ currentMonth }: IContentProps) => {
 	const weekEnd = endOfWeek(endOfMonth(currentMonth));
 
 	const { data: recruitsInfo } = useRecruitsQuery();
+	const { setRecruitInfo } = useRecruitStore();
 
-	const filterRecruits = useMemo(() => {
-		if (recruitsInfo) {
-			return useFilterJobs(recruitsInfo, weekStart, weekEnd);
+	const { monthlyRecruits, mapRecruitsWithDay } = useFilterJobs(
+		recruitsInfo,
+		weekStart,
+		weekEnd,
+	);
+
+	useEffect(() => {
+		if (monthlyRecruits) {
+			setRecruitInfo(monthlyRecruits);
 		}
-		return null;
-	}, [recruitsInfo, weekStart, weekEnd]);
+	}, [monthlyRecruits, setRecruitInfo]);
 
 	const renderCalenderRow = useCallback(() => {
 		const rows = [];
@@ -33,15 +40,13 @@ const CalenderContent = ({ currentMonth }: IContentProps) => {
 			const week = [];
 			for (let i = 0; i < 7; i++) {
 				const dayKey = currentDay.toISOString().split('T')[0];
-				const recruits = filterRecruits
-					?.mapRecruitsWithDay()
-					.get(dayKey);
+				const recruits = mapRecruitsWithDay().get(dayKey);
 
 				week.push(
 					<CalenderCell
 						key={currentDay.toISOString()}
 						day={currentDay}
-						companies={recruits}
+						companies={recruits ?? []}
 					/>,
 				);
 				currentDay = addDays(1)(currentDay);
@@ -57,7 +62,7 @@ const CalenderContent = ({ currentMonth }: IContentProps) => {
 		}
 
 		return rows;
-	}, [weekStart, weekEnd, filterRecruits]);
+	}, [weekStart, weekEnd]);
 
 	return <div className={cx('calender-body')}>{renderCalenderRow()}</div>;
 };

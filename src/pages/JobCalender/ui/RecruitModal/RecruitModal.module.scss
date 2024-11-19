@@ -4,8 +4,9 @@
 .recruit-modal__container {
 	display: flex;
 	flex-direction: column;
-
 	overflow-y: scroll;
+	margin-bottom: 20px;
+	max-width: 822px;
 }
 
 .recruit-modal__company-info {
@@ -61,7 +62,7 @@
 	min-height: 500px;
 
 	img {
-		width: 90%;
+		width: 95%;
 		margin: 0 auto;
 		display: flex;
 		padding-bottom: 30px;

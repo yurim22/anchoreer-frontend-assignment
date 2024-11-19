@@ -5,6 +5,8 @@ import classNames from 'classnames/bind';
 import { format } from 'date-fns/fp';
 import { ICompanyInfo } from '@/pages/JobCalender/type/company';
 import { TYPE } from '@/pages/JobCalender/constant/company';
+import useModalStore from '@/shared/store/useModalStore';
+import { useRecruitStore } from '@/shared/store/useRecruitStore';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +17,9 @@ interface ICalenderCellProps {
 
 const CalenderCell = ({ day, companies }: ICalenderCellProps) => {
 	const formattedDay: string = format('d')(day);
+	const { openModal } = useModalStore();
+
+	const { setSelectedRecruit } = useRecruitStore();
 
 	return (
 		<div className={cx('calender-row__cell')} key={formattedDay}>
@@ -26,6 +31,10 @@ const CalenderCell = ({ day, companies }: ICalenderCellProps) => {
 								<div
 									className={cx('calender-row__company')}
 									key={info.id}
+									onClick={() => {
+										openModal('detail_modal');
+										setSelectedRecruit(info.id);
+									}}
 								>
 									<div
 										className={cx(

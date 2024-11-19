@@ -2,13 +2,17 @@ import { IRecruits } from '@/shared/api/recruits/type';
 import { addDays, isAfter, isBefore } from 'date-fns/fp';
 import { ICompanyInfo } from '../../type/company';
 import { TYPE } from '../../constant/company';
+import { useRecruitStore } from '@/shared/store/useRecruitStore';
+import { useEffect } from 'react';
 
 export const useFilterJobs = (
-	recruitsInfo: IRecruits[],
+	recruitsInfo: IRecruits[] | undefined,
 	start: Date,
 	end: Date,
 ) => {
-	const monthlyRecruits = recruitsInfo.filter((info) => {
+	const { setRecruitInfo } = useRecruitStore();
+
+	const monthlyRecruits = recruitsInfo?.filter((info) => {
 		const includeStart =
 			isAfter(start)(info.start_time) && isBefore(end)(info.end_time);
 		const includeEnd =
@@ -25,7 +29,7 @@ export const useFilterJobs = (
 		});
 	};
 
-	const mapRecruitsWithDay = () => {
+	const mapRecruitsWithDay: () => Map<string, ICompanyInfo[]> = () => {
 		const dateMap = new Map();
 
 		let currentDay = start;
@@ -34,7 +38,7 @@ export const useFilterJobs = (
 			currentDay = addDays(1)(currentDay);
 		}
 
-		monthlyRecruits.forEach((recruit) => {
+		monthlyRecruits?.forEach((recruit) => {
 			const startDate = recruit.start_time.split(' ')[0];
 			const endDate = recruit.end_time.split(' ')[0];
 

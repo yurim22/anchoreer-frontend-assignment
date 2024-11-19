@@ -2,22 +2,31 @@ import Modal from '@/shared/component/Modal/Modal';
 
 import styles from './RecruitModal.module.scss';
 import classNames from 'classnames/bind';
+import useModalStore from '@/shared/store/useModalStore';
+import { useRecruitStore } from '@/shared/store/useRecruitStore';
 
 const cx = classNames.bind(styles);
 const RecruitModal = () => {
+	const { isOpen } = useModalStore();
+	const { selectedRecruit } = useRecruitStore();
+	console.log(selectedRecruit);
+
+	if (!isOpen || !selectedRecruit) return null;
+
 	return (
 		<Modal>
 			<div className={cx('recruit-modal__container')}>
 				<div className={cx('recruit-modal__company-info')}>
 					<div className={cx('recruit-modal__company-name')}>
-						회사이름
+						{selectedRecruit.company_name}
 					</div>
 					<div className={cx('recruit-modal__jobs-info')}>
 						<div className={cx('recruit-modal__jobs-title')}>
-							프엔개발자
+							{selectedRecruit.title}
 						</div>
 						<div className={cx('recruit-modal__jobs-due')}>
-							기간
+							{selectedRecruit.start_time} ~{' '}
+							{selectedRecruit.end_time}
 						</div>
 						<div className={cx('recruit-modal__duty-tags')}>
 							직무 정보들~
@@ -26,7 +35,7 @@ const RecruitModal = () => {
 				</div>
 
 				<div className={cx('recruit-modal__company-image')}>
-					<img src="https://daoift3qrrnil.cloudfront.net/content_images/images/000/258/398/webp/240531_%EA%B8%B0%EA%B3%84%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80_%EC%84%9C%EB%B9%84%EC%8A%A4%EB%B6%80.webp?1717145255" />
+					<img src={selectedRecruit.image_url} alt="회사 이미지" />
 				</div>
 			</div>
 		</Modal>
