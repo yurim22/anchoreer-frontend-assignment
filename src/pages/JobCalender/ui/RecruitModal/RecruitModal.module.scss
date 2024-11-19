@@ -1,0 +1,69 @@
+@use '/src/apps/styles/basics/common.scss' as common;
+@use '/src/apps/styles/basics/vars.scss' as *;
+
+.recruit-modal__container {
+	display: flex;
+	flex-direction: column;
+
+	overflow-y: scroll;
+}
+
+.recruit-modal__company-info {
+	@include common.flex-column(normal, normal);
+	padding: 0 36px;
+	margin-bottom: 32px;
+
+	.recruit-modal__company-name {
+		font-size: 18px;
+		line-height: 25px;
+		letter-spacing: 0.015em;
+		font-weight: 600;
+		color: #333333;
+		margin-bottom: 12px;
+	}
+
+	.recruit-modal__jobs-info {
+		margin-bottom: 4px;
+	}
+
+	.recruit-modal__jobs-title {
+		font-size: 24px;
+		line-height: 33px;
+		letter-spacing: 0.015em;
+		font-weight: 700;
+		color: #333333;
+		margin-bottom: 4px;
+	}
+
+	.recruit-modal__jobs-due {
+		font-size: 14px;
+		line-height: 21px;
+		letter-spacing: 0.01em;
+		font-weight: 400;
+		display: flex;
+		gap: 4px;
+		color: #777777;
+	}
+
+	.recruit-modal__duty-tags {
+		font-size: 14px;
+		line-height: 21px;
+		letter-spacing: 0.01em;
+		font-weight: 400;
+		display: flex;
+		gap: 4px;
+		color: #777777;
+	}
+}
+
+.recruit-modal__company-image {
+	width: 100%;
+	min-height: 500px;
+
+	img {
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		padding-bottom: 30px;
+	}
+}
