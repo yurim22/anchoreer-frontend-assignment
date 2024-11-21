@@ -4,9 +4,16 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 interface IHeaderProps {
+	// 현재 날짜
 	current: Date;
+
+	// 이전 달 이동 함수
 	prevMonth: () => void;
+
+	// 다음 달 이동 함수
 	nextMonth: () => void;
+
+	// 날짜 포맷 함수
 	formatDate: (date: Date, form: string) => string;
 }
 

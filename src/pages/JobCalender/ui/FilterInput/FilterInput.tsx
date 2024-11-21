@@ -10,16 +10,19 @@ import { IHierarchy } from '../../type/company';
 const cx = classNames.bind(styles);
 
 const FilterInput = () => {
+	// 직무 정보 필터 열림 상태
 	const [isOpen, setIsOpen] = useState(false);
-	const { setSelectedDuty, selectedDuty } = useRecruitStore();
+
+	// 선택한 직부 정보
+	const { setSelectedDuty } = useRecruitStore();
 
 	const { data: duties } = useDutiesQuery();
+
+	// 직무 정보 계층 구조
 	const hierarchy = duties && buildHierarchy(duties);
 
 	useEffect(() => {
-		// hierarchy && setSelectedDuty(hierarchy);
-
-		const flattenHierarchy = (hierarchy: IHierarchy[]): any => {
+		const flattenHierarchy = (hierarchy: IHierarchy[]): IHierarchy[] => {
 			return hierarchy.flatMap((node: IHierarchy) =>
 				node.children
 					? [node, ...flattenHierarchy(node.children)]

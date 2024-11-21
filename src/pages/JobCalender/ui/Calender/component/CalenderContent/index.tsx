@@ -42,6 +42,7 @@ const CalenderContent = ({ currentMonth }: IContentProps) => {
 		return mapRecruitsWithDay();
 	}, [mapRecruitsWithDay]);
 
+	// 달력 행 렌더링 함수
 	const renderCalenderRow = useCallback(() => {
 		const rows = [];
 		let currentDay = weekStart;

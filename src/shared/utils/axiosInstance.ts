@@ -13,9 +13,6 @@ export const instance = axios.create({
 const onRequest = (
 	config: InternalAxiosRequestConfig,
 ): InternalAxiosRequestConfig => {
-	const { method, url } = config;
-	console.log(`[API-REQUEST] ${method?.toUpperCase()} ${url}`);
-
 	config.headers['Content-Type'] = 'application/json; charset=utf-8';
 
 	return config;
@@ -36,8 +33,6 @@ const onError = (error: AxiosError | Error): Promise<AxiosError> => {
 				`🚨 [API - ERROR] ${method?.toUpperCase()} ${url} | ${statusCode} : ${message}`,
 			);
 		}
-	} else {
-		console.log(`🚨 [API] | Error ${error.message}`);
 	}
 	return Promise.reject(error);
 };

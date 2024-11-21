@@ -1,15 +1,23 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 interface ProvidersProps {
-  children: React.ReactNode
+	children: React.ReactNode;
 }
 
 const Providers = ({ children }: ProvidersProps) => {
-  const queryClient = new QueryClient()
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				throwOnError: true,
+			},
+		},
+	});
 
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  )
-}
+	return (
+		<QueryClientProvider client={queryClient}>
+			{children}
+		</QueryClientProvider>
+	);
+};
 
-export default Providers
+export default Providers;

@@ -1,0 +1,28 @@
+@use '/src/apps/styles/basics/common.scss' as common;
+@use '/src/apps/styles/basics/vars.scss' as *;
+
+.fallback_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-direction: column;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+p {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.fallback_container__button {
+	margin-top: 20px;
+	width: 30%;
+
+	@include common.flex-column(center, center);
+}

@@ -8,6 +8,7 @@ export const useFilterJobs = (
 	start: Date,
 	end: Date,
 ) => {
+	// 월별 공고 정보
 	const monthlyRecruits = recruitsInfo?.filter((info) => {
 		const includeStart =
 			isAfter(start)(info.start_time) && isBefore(end)(info.end_time);
@@ -23,14 +24,16 @@ export const useFilterJobs = (
 		);
 	};
 
+	// 공고 정렬 함수 (start 먼저, end 나중에)
 	const sortByType = (companiesInfo: ICompanyInfo[]) => {
 		return companiesInfo.sort((a: ICompanyInfo, b: ICompanyInfo) => {
-			if (a.type === TYPE.START && b.type === TYPE.END) return -1; // 'start'를 먼저
-			if (a.type === TYPE.END && b.type === TYPE.START) return 1; // 'end'를 나중에
+			if (a.type === TYPE.START && b.type === TYPE.END) return -1;
+			if (a.type === TYPE.END && b.type === TYPE.START) return 1;
 			return 0;
 		});
 	};
 
+	// 날짜별 공고 정보 맵핑 함수
 	const mapRecruitsWithDay: () => Map<string, ICompanyInfo[]> = () => {
 		const dateMap = new Map();
 

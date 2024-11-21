@@ -12,8 +12,13 @@ const Calender = () => {
 
 	return (
 		<div className={cx('calender')}>
+			{/* 달력 헤더 */}
 			<CalenderHeader {...calenders} />
+
+			{/* 달력 날짜 */}
 			<DayField />
+
+			{/* 달력 컨텐츠 */}
 			<CalenderContent currentMonth={calenders.current} />
 		</div>
 	);

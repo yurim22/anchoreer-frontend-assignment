@@ -14,6 +14,7 @@ interface IFilterGroupProps {
 const FilterGroup = ({ hierarchy, setIsOpen }: IFilterGroupProps) => {
 	const [dutyList, setDutyList] = useState<IHierarchy[]>([]);
 
+	// 직무 선택 함수
 	const handleSelectDuty = (duty: IHierarchy, level: number) => {
 		setDutyList((prev) => {
 			const newSelected = prev.slice(0, level);
@@ -22,6 +23,7 @@ const FilterGroup = ({ hierarchy, setIsOpen }: IFilterGroupProps) => {
 		});
 	};
 
+	// 직무 리스트 렌더링 함수
 	const renderDutyList = (duties: IHierarchy[], level: number) => (
 		<div className={cx('duty-group__section')} key={level}>
 			<DutyList
@@ -46,7 +48,10 @@ const FilterGroup = ({ hierarchy, setIsOpen }: IFilterGroupProps) => {
 				</div>
 				<div className={cx('category-modal__content')}>
 					<div className={cx('duty-groups__container')}>
+						{/* 최상위 직무 리스트 */}
 						{renderDutyList(hierarchy, 0)}
+
+						{/* 중간 직무 리스트 */}
 						{dutyList.map((duty, index) =>
 							duty.children && duty.children.length > 0 ? (
 								<div

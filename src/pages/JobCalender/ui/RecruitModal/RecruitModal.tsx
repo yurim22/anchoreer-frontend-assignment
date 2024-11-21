@@ -19,9 +19,11 @@ const RecruitModal = () => {
 		<Modal>
 			<div className={cx('recruit-modal__container')}>
 				<div className={cx('recruit-modal__company-info')}>
+					{/* 회사 이름 */}
 					<div className={cx('recruit-modal__company-name')}>
 						{content.company_name}
 					</div>
+					{/* 직무 정보 */}
 					<div className={cx('recruit-modal__jobs-info')}>
 						<div className={cx('recruit-modal__jobs-title')}>
 							{content.title}
@@ -32,6 +34,7 @@ const RecruitModal = () => {
 					</div>
 				</div>
 
+				{/* 공고 이미지 */}
 				<div className={cx('recruit-modal__company-image')}>
 					<img src={content.image_url} alt="회사 이미지" />
 				</div>
