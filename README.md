@@ -1,7 +1,9 @@
-# 🚩 채용달력 만들기
+# 🚩 앵커리어 과제 설명 - 채용달력 만들기
 
 ## 📫 결과물 미리보기
-
+<p align=center>
+![ScreenRecording2024-11-21at6 36 05PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/a4682aee-aa8c-4396-85ce-d3d63b3240cc)
+</p>
 ---
 
 ## ▶️ 프로젝트 실행
@@ -23,7 +25,9 @@ $ yarn dev
 
 ### 1)채용달력 노출
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d193e50f-e5e8-4d9e-a334-467dd8c257fe/2ff213fa-5a98-415f-925a-48c9c6fcf0ca/image.png)
+<p align="center">
+<img width="800" alt="Screenshot 2024-11-21 at 6 28 04 PM" src="https://github.com/user-attachments/assets/3f4f752f-317c-401b-ba5c-be939eba1365">
+</p>
 
 -   **월 네비게이션 구현**
     -   달력 상단에 현재 년/월을 표시하며 이전 월, 다음 월로 이동이 가능합니다.
@@ -37,9 +41,13 @@ $ yarn dev
     -   노출 우선순위 : 시작 > 마감
     -   채용 달력 내 회사 명을 입력하면 상세 정보 모달이 노출됩니다.
 
+<br/>
+
 ### 2) 채용 상세 정보 모달
 
-![Screenshot 2024-11-21 at 5.45.18 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d193e50f-e5e8-4d9e-a334-467dd8c257fe/4833670b-8af4-46aa-8380-f0d1c25f8b65/Screenshot_2024-11-21_at_5.45.18_PM.png)
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/420fea45-d7e6-4c9d-a30a-35a11b63a8a9" width=800 height=500 >
+</p>
 
 -   원하는 회사의 공고를 선택하면 상세정보를 확인 가능합니다.
 -   해당 공고의 기업명, 제목, 채용 공고의 시작일, 마감일, 채용 공고 이미지가 노출됩니다.
@@ -47,22 +55,32 @@ $ yarn dev
     -   이전 버튼을 선택하면 이전 공고의 상세정보를 확인 가능합니다.
     -   다음 버튼을 선택하면 이전 공고의 상세정보를 확인 가능합니다.
 
+<br/>
+
 ### 3) 직무 정보 노출
 
-![Screenshot 2024-11-21 at 5.51.34 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d193e50f-e5e8-4d9e-a334-467dd8c257fe/9553b371-f216-4240-a6a6-f081dc1e44a2/Screenshot_2024-11-21_at_5.51.34_PM.png)
+<p align="center">
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/7e7e38ad-3ac3-4126-8127-7e918938c9b1">
+</p>
 
 -   **직무의 계층 정보 노출**
     -   상위 계층부터 하위 계층까지의 관계를 확인 가능합니다.
     -   중첩 컴포넌트를 활용하여 계층 구조에 대한 확인을 쉽게 할 수 있습니다.
 
+<br/>
+
 ### 4) 에러 핸들링 처리
 
-![Screenshot 2024-11-21 at 5.57.16 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d193e50f-e5e8-4d9e-a334-467dd8c257fe/74c77edf-d76e-450c-9ef6-26d65f8248a0/Screenshot_2024-11-21_at_5.57.16_PM.png)
+<p align="center">
+<img width="547" alt="image" src="https://github.com/user-attachments/assets/4c59c4bb-fad4-4554-8203-cb21bcd2da8d">
+</p>
 
 -   **API 호출 에러 핸들링**
     -   api 호출 시 발생 할 수 있는 에러들에 대해 미리 정의하였습니다.
     -   해당 에러들을 사용자에게 노출하여 불편함을 줄이기 위해 Fallback ui를 추가로 생성하였습니다.
         -   `다시시도` 버튼을 통해 api를 새로 불러오도록 유도하였습니다.
+
+<br/>
 
 ## 🛠️ 사용 기술
 
@@ -95,7 +113,9 @@ $ yarn dev
 -   각 일자에 노출되어야하는 기업들을 확인하기 위해 채용의 시작날짜와 종료날짜를 확인하여 ‘날짜’를 key로 한 Map 구조를 생성하였습니다.
 -   예시)
 
-![Screenshot 2024-11-21 at 6.06.50 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d193e50f-e5e8-4d9e-a334-467dd8c257fe/303704ed-afb8-4908-be5c-e52eeed64ba7/Screenshot_2024-11-21_at_6.06.50_PM.png)
+<p align=center>
+<img width="437" alt="Screenshot 2024-11-21 at 6 33 24 PM" src="https://github.com/user-attachments/assets/4b5181b5-debb-41d4-aa20-3beebdbd6af2">
+</p>
 
 -   이를 활용하여 각 날짜에 맞는 노출정보를 빠르게 찾을 수 있었으며 type으로 ‘시작’과 ‘종료’를 구별하여 시각적으로 노출하였습니다.
 
@@ -133,3 +153,6 @@ $ yarn dev
 
 -   **중첩 컴포넌트 활용 및 재귀적 호출**
     -   `<FilterGroup />` component 내부에서 중첩 구조를 처리하고, 재귀적으로 자기 자신을 호출하여 하위 부서를 렌더링하도록 하였습니다.
+ 
+
+감사합니다!
