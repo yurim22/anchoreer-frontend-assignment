@@ -4,6 +4,7 @@ import styles from './RecruitModal.module.scss';
 import classNames from 'classnames/bind';
 import useModalStore from '@/shared/store/useModalStore';
 import { useRecruitStore } from '@/shared/store/useRecruitStore';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 const RecruitModal = () => {
@@ -11,7 +12,12 @@ const RecruitModal = () => {
 	const {
 		selectedRecruit: { content },
 		setMoveRecruit,
+		setCheckedInfo,
 	} = useRecruitStore();
+
+	useEffect(() => {
+		content && setCheckedInfo(content.id);
+	}, [content]);
 
 	if (!isOpen || !content) return null;
 

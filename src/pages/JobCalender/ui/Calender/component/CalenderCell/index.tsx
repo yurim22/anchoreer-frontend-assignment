@@ -18,6 +18,7 @@ interface ICalenderCellProps {
 const CalenderCell = ({ day, companies }: ICalenderCellProps) => {
 	const formattedDay: string = format('d')(day);
 	const { openModal } = useModalStore();
+	const { checkedInfo } = useRecruitStore();
 
 	const { setSelectedRecruit } = useRecruitStore();
 
@@ -29,7 +30,9 @@ const CalenderCell = ({ day, companies }: ICalenderCellProps) => {
 					? companies.map((info) => {
 							return (
 								<div
-									className={cx('calender-row__company')}
+									className={cx('calender-row__company', {
+										checked: checkedInfo.includes(info.id),
+									})}
 									key={info.id}
 									onClick={() => {
 										openModal('detail_modal');

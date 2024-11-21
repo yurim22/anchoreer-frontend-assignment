@@ -29,6 +29,10 @@
 		height: 100%;
 		position: relative;
 		margin-top: 2px;
+
+		&.checked {
+			opacity: 50%;
+		}
 	}
 
 	.calender-row__label {

@@ -15,6 +15,10 @@ interface IRecruitStore {
 	// 선택한 직무
 	selectedDuty: IHierarchy[];
 	setSelectedDuty: (duty: IHierarchy[]) => void;
+
+	// 체크한 공고
+	checkedInfo: number[];
+	setCheckedInfo: (currIdx: number) => void;
 }
 
 export const useRecruitStore = create<IRecruitStore>((set, get) => ({
@@ -91,5 +95,10 @@ export const useRecruitStore = create<IRecruitStore>((set, get) => ({
 		if (JSON.stringify(currentDuty) !== JSON.stringify(hierarchy)) {
 			set({ selectedDuty: hierarchy });
 		}
+	},
+
+	checkedInfo: [],
+	setCheckedInfo: (id: number) => {
+		set({ checkedInfo: [...get().checkedInfo, id] });
 	},
 }));
