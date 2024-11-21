@@ -2,7 +2,7 @@
 
 ## 📫 결과물 미리보기
 <p align=center>
-![ScreenRecording2024-11-21at6 36 05PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/a4682aee-aa8c-4396-85ce-d3d63b3240cc)
+    <img src="https://github.com/user-attachments/assets/a4682aee-aa8c-4396-85ce-d3d63b3240cc" />
 </p>
 ---
 
