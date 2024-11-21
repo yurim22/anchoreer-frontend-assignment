@@ -2,16 +2,12 @@ import { IRecruits } from '@/shared/api/recruits/type';
 import { addDays, isAfter, isBefore } from 'date-fns/fp';
 import { ICompanyInfo } from '../../type/company';
 import { TYPE } from '../../constant/company';
-import { useRecruitStore } from '@/shared/store/useRecruitStore';
-import { useEffect } from 'react';
 
 export const useFilterJobs = (
 	recruitsInfo: IRecruits[] | undefined,
 	start: Date,
 	end: Date,
 ) => {
-	const { setRecruitInfo } = useRecruitStore();
-
 	const monthlyRecruits = recruitsInfo?.filter((info) => {
 		const includeStart =
 			isAfter(start)(info.start_time) && isBefore(end)(info.end_time);
@@ -20,6 +16,12 @@ export const useFilterJobs = (
 
 		return includeStart || includeEnd;
 	});
+
+	const filterByDuty = (duties: number[]) => {
+		return monthlyRecruits?.filter((recruit) =>
+			recruit.duty_ids.some((duty) => duties.includes(duty)),
+		);
+	};
 
 	const sortByType = (companiesInfo: ICompanyInfo[]) => {
 		return companiesInfo.sort((a: ICompanyInfo, b: ICompanyInfo) => {

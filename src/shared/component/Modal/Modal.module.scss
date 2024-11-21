@@ -37,9 +37,9 @@
 	flex-direction: column;
 	margin: 0 auto;
 	min-height: 200px;
-	min-width: 750px;
 	position: relative !important;
 	word-break: keep-all;
+	width: 750px;
 
 	animation: modalActive 0.4s cubic-bezier(0.33, 1, 0.68, 1) both;
 	animation-delay: 0.2s;

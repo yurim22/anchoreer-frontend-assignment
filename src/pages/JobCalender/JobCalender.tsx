@@ -9,9 +9,8 @@ const cx = classNames.bind(styles);
 const JobCalender = () => {
 	return (
 		<div className={cx('job-calender__container')}>
-			{/* <FilterInput /> */}
+			<FilterInput />
 			<Calender />
-
 			<RecruitModal />
 		</div>
 	);

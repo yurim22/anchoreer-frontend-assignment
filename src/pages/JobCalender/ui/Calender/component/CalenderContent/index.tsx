@@ -1,8 +1,14 @@
-import { addDays, endOfMonth, endOfWeek, startOfMonth } from 'date-fns/fp';
+import {
+	addDays,
+	endOfMonth,
+	endOfWeek,
+	format,
+	startOfMonth,
+} from 'date-fns/fp';
 import styles from './CalenderContent.module.scss';
 import classNames from 'classnames/bind';
 import { startOfWeek } from 'date-fns';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import CalenderCell from '../CalenderCell';
 import { useRecruitsQuery } from '@/pages/JobCalender/hook/api/useRecruitsQuery';
 import { useFilterJobs } from '@/pages/JobCalender/hook/common/useFilterJobs';
@@ -30,7 +36,11 @@ const CalenderContent = ({ currentMonth }: IContentProps) => {
 		if (monthlyRecruits) {
 			setRecruitInfo(monthlyRecruits);
 		}
-	}, [monthlyRecruits, setRecruitInfo]);
+	}, [monthlyRecruits]);
+
+	const mapRecruits = useMemo(() => {
+		return mapRecruitsWithDay();
+	}, [mapRecruitsWithDay]);
 
 	const renderCalenderRow = useCallback(() => {
 		const rows = [];
@@ -39,8 +49,8 @@ const CalenderContent = ({ currentMonth }: IContentProps) => {
 		while (currentDay <= weekEnd) {
 			const week = [];
 			for (let i = 0; i < 7; i++) {
-				const dayKey = currentDay.toISOString().split('T')[0];
-				const recruits = mapRecruitsWithDay().get(dayKey);
+				const dayKey = format('yyyy-MM-dd')(currentDay);
+				const recruits = mapRecruits.get(dayKey);
 
 				week.push(
 					<CalenderCell

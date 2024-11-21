@@ -3,3 +3,9 @@ export interface ICompanyInfo {
 	company: string;
 	id: number;
 }
+
+export interface IHierarchy {
+	id: number;
+	name: string;
+	children: IHierarchy[];
+}

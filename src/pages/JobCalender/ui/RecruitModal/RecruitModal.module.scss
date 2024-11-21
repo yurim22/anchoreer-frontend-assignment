@@ -1,6 +1,25 @@
 @use '/src/apps/styles/basics/common.scss' as common;
 @use '/src/apps/styles/basics/vars.scss' as *;
 
+.recruit-modal__move-button {
+	&.prev {
+		position: absolute;
+		top: 50%;
+		left: -50px;
+	}
+
+	&.next {
+		position: absolute;
+		top: 50%;
+		right: -50px;
+	}
+
+	button {
+		color: #fff;
+		font-size: 24px;
+	}
+}
+
 .recruit-modal__container {
 	display: flex;
 	flex-direction: column;

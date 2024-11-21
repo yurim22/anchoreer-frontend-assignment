@@ -8,34 +8,50 @@ import { useRecruitStore } from '@/shared/store/useRecruitStore';
 const cx = classNames.bind(styles);
 const RecruitModal = () => {
 	const { isOpen } = useModalStore();
-	const { selectedRecruit } = useRecruitStore();
-	console.log(selectedRecruit);
+	const {
+		selectedRecruit: { content },
+		setMoveRecruit,
+	} = useRecruitStore();
 
-	if (!isOpen || !selectedRecruit) return null;
+	if (!isOpen || !content) return null;
 
 	return (
 		<Modal>
 			<div className={cx('recruit-modal__container')}>
 				<div className={cx('recruit-modal__company-info')}>
 					<div className={cx('recruit-modal__company-name')}>
-						{selectedRecruit.company_name}
+						{content.company_name}
 					</div>
 					<div className={cx('recruit-modal__jobs-info')}>
 						<div className={cx('recruit-modal__jobs-title')}>
-							{selectedRecruit.title}
+							{content.title}
 						</div>
 						<div className={cx('recruit-modal__jobs-due')}>
-							{selectedRecruit.start_time} ~{' '}
-							{selectedRecruit.end_time}
-						</div>
-						<div className={cx('recruit-modal__duty-tags')}>
-							직무 정보들~
+							{content.start_time} ~ {content.end_time}
 						</div>
 					</div>
 				</div>
 
 				<div className={cx('recruit-modal__company-image')}>
-					<img src={selectedRecruit.image_url} alt="회사 이미지" />
+					<img src={content.image_url} alt="회사 이미지" />
+				</div>
+			</div>
+			<div className={cx('recruit-modal__move-button-container')}>
+				<div className={cx('recruit-modal__move-button', 'prev')}>
+					<button
+						type="button"
+						onClick={() => setMoveRecruit('prev')}
+					>
+						◀️
+					</button>
+				</div>
+				<div className={cx('recruit-modal__move-button', 'next')}>
+					<button
+						type="button"
+						onClick={() => setMoveRecruit('next')}
+					>
+						▶️
+					</button>
 				</div>
 			</div>
 		</Modal>
